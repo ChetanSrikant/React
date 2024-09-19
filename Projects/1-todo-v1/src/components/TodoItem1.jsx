@@ -5,7 +5,7 @@ const TodoItem1 = () => {
     let todoDate = "19/09/2024"
   return (
     <div>
-      <div class="row">
+      <div class="row kg-row">
           <div class="col-6">
             {todoName}
           </div>
@@ -13,7 +13,7 @@ const TodoItem1 = () => {
               {todoDate}
             </div>
             <div class="col-2">
-              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-danger kg-button">Delete</button>
             </div>
           </div>
     </div>
