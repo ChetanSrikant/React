@@ -4,17 +4,23 @@ import FoodItems from "./components/FoodItems";
 import ErrorMessage from "./components/ErrorMessage";
 import FoodInput from './components/FoodInput';
 import "./App.css"
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
 
-  let foodItems = ["Dal", "Green Vegetables", "Roti", "Salad", "Milk"];
+ 
+  const [foodItems, setFoodItems] = useState(["Green Vegetables", "Salad", "Milk"])
 
-  let textToShow = "Food Item Entered by user"
+  const [textToShow, setTextToShow] = useState("Food Item Entered by user");
 
-  const handleOnChange = (event) =>{
-    console.log(event.target.value);
-    textToShow = event.target.value;
+  const onKeyDown = (event) =>{
+    if(event.key === 'Enter'){
+      let newFoodItem = event.target.value;
+      event.target.value = "";
+      let newItems = [...foodItems, newFoodItem];
+      setFoodItems(newItems);
+    }
+    setTextToShow(event.target.value);
   }
 
   return (
@@ -24,7 +30,7 @@ const App = () => {
       
       <ErrorMessage items = {foodItems}/> 
 
-      <FoodInput handleOnChange={handleOnChange}></FoodInput>
+      <FoodInput handleKeyDown={onKeyDown}></FoodInput>
 
       <p>{textToShow}</p>
 
