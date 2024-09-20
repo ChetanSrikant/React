@@ -1,25 +1,41 @@
-
+import Container from './components/Container';
 import 'bootstrap/dist/css/bootstrap.css';
 import FoodItems from "./components/FoodItems";
 import ErrorMessage from "./components/ErrorMessage";
+import FoodInput from './components/FoodInput';
 import "./App.css"
 import React from "react";
 
 const App = () => {
 
-  let foodItems = ["Dal", "Green Vegetables", "Roti", "Salad", "Milk"]
+  let foodItems = ["Dal", "Green Vegetables", "Roti", "Salad", "Milk"];
+
+  let textToShow = "Food Item Entered by user"
+
+  const handleOnChange = (event) =>{
+    console.log(event.target.value);
+    textToShow = event.target.value;
+  }
 
   return (
-    <React.Fragment>
+   <>
+    <Container>
       <h1 className='food-heading'>Healthy Food</h1>
-
+      
       <ErrorMessage items = {foodItems}/> 
 
-      {/* <FoodItems ></FoodItems> */}
+      <FoodInput handleOnChange={handleOnChange}></FoodInput>
+
+      <p>{textToShow}</p>
 
       <FoodItems items={foodItems}/>
       
-    </React.Fragment>
+    </Container>
+
+    {/* <Container>
+      <p>This is the healthiest food available over here </p>
+    </Container> */}
+   </>
   );
 };
 
